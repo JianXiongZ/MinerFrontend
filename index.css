@@ -1,0 +1,51 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+ul{
+    width:300px;
+    padding:0px;
+    height:80px;
+    margin-top: 20px;
+}
+li{
+    list-style: none;
+    margin: 0px;
+    padding:0px;
+    float: right;
+    line-height:28px;
+}
+dd{
+    margin-left: -5px;
+}
+#contain{
+   margin: 20px;
+}
+#left{
+    width: 25%;
+    float: left;
+    margin-left: 40px;
+}
+.left_head{
+    float: right;
+    margin-right: 10px;
+}
+
+hr{
+    margin:0px;
+    padding:0px;
+    float: left;
+}
+#right{
+    width: 70%;
+    float: right;
+
+}
+.float_Lbry{
+    margin-left: 13px;
+}
+.help{
+    font-size: small;
+    float: right;
+    margin:10px 200px;
+}

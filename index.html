@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="index.css" />
+
+<body>
+<div id="contain">
+    <div id="left">
+        <form action="">
+            <div class="left_head"><input type="button" value="开始挖矿"/>&nbsp;&nbsp;<input type="button" value="停止挖矿"/></div><br/>
+            <dl>
+                <dt><h2>Ethereum-only mining:</h2></dt>
+                <dd>
+                    <ul>
+                        <li><input type="radio" value="eth" name="ethereum" checked="checked"/>ethpool:<input type="url" name="eth_url" value="usl.ethpool.org:3333" /></li>
+                        <li>wallet<input type="text" name="eth_wallet"/></li>
+                        <li>password<input type="password" name="eth_pwd"/></li>
+                    </ul>
+                    <ul>
+                        <li><input type="radio" value="f2"  name="ethereum"/>ethpool:<input type="url" name="eth_url" value="eth.f2pool.com:8080" /></li>
+                        <li>wallet<input type="text" name="f2_wallet"/></li>
+                        <li>password<input type="password" name="f2_pwd"/></li>
+                        <li>worker<input type="text" name="f2_worker"/></li>
+                    </ul>
+                    <ul>
+                        <li><input type="radio" value="nano"  name="ethereum"/>ethpool:<input type="url" name="eth_url" value="eul.namopool.org:9999" /></li>
+                        <li>wallet<input type="text" name="nano_wallet"/></li>
+                        <li>password<input type="password" name="nano_pwd"/></li>
+                        <li>worker<input type="text" name="nano_worker"/></li>
+                    </ul>
+                </dd>
+            </dl>
+            <br/><br/>
+            <dl>
+                <dt><h3><input type="checkbox" />双挖</h3></dt>
+                <dd id="double">
+                    <ul>
+                        <li><input type="radio" value="decred" name="double"/>Decred pool<input type="text" value="decred_pool"/></li>
+                        <li>wallet<input type="text" name="decred_name"/></li>
+                        <li>password<input type="password" name="decred_pwd"/></li>
+                    </ul>
+                    <ul>
+                        <li><input type="radio" value="siacoin" name="double"/>Siacoin pool<input type="text" value="siacoin_pool"/></li>
+                        <li>wallet<input type="text" name="siacoin_name"/></li>
+                        <li>password<input type="password" name="siacoin_pwd"/></li>
+                    </ul>
+                    <ul>
+                        <li><input type="radio" value="lbry" name="double"/>&nbsp;&nbsp;Lbry pool<input type="text" value="lbry_pool" class="float_Lbry"/></li>
+                        <li>wallet<input type="text" name="lbry_name"/></li>
+                        <li>password<input type="password" name="lbry_pwd"/></li>
+                    </ul>
+                </dd>
+            </dl>
+        </form>
+    </div>
+    <!--left end-->
+    <hr size=800 width="1" color="#999999"/>
+    <div id="right">
+        <form action="">
+            <h2>开始配置：<a href="" target="_blank" class="help">帮助</a></h2>
+            <p>挖矿状态：</p>
+            <input type="checkbox" name="auto"/>重启是否自动挖矿<br/><br/>
+            <input type="checkbox" name="visited"/>是否允许其他主机访问<br/>
+            用户名：<input type="text" name="uname"/><br/>
+            密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="pwd"/><br/>
+            <input type="submit" name="submit" value="保存"/>
+        </form>
+    </div>
+    <!--right end-->
+</div>
+</body>
+</html>
