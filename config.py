@@ -2,13 +2,12 @@
 #encoding: utf-8
 
 import cgi, cgitb
-import os
 
 form = cgi.FieldStorage()
 
 config_list = form.getvalue('config')
 
-PATH = '/home/jianxiong/eth_miner/config_save.txt'
+PATH = '~/eth_miner/config_save.txt'
 
 print("Content-type: text/html\n")
 

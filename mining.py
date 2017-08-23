@@ -8,7 +8,7 @@ form = cgi.FieldStorage()
 
 value = form.getvalue('config')
 
-PATH = '/home/jianxiong/eth_miner/config.txt'
+PATH = '~/eth_miner/config.txt'
 
 
 
