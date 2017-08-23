@@ -1,5 +1,4 @@
 #!/bin/bash
-#为什么一定要有头header
 echo Content-type: text/html
 echo ""
 
