@@ -1,4 +1,5 @@
 $().ready(function(){
+
     		$('#stop_mining').click(function(){
     			$.ajax({
     				type:"GET",
@@ -6,7 +7,7 @@ $().ready(function(){
     			});
     		});
     		$('#start_mining').click(function(){
-    			
+    			$("#error").text("");
     			function get_config(){
     				var myconfig=[];
     				var val_eth=$('input:radio[name="ethnum"]:checked').val();
@@ -39,7 +40,11 @@ $().ready(function(){
     				url: "/eth_miner/mining.py?config=" + get_config(),
     				dataType: 'json',
     				success:function(data){
-    					alert(data);
+
+    					if (data == "non_input") {
+    						$("#error").text("Please input wallet or password or worker!");
+    					}
+
     				}
     			});
     		});
@@ -67,4 +72,4 @@ $().ready(function(){
     			});
     			
     		});
-    	});
+  	});

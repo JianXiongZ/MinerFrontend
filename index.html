@@ -15,24 +15,25 @@
             <div class="left_head"><input type="button" id="start_mining" value="开始挖矿"/>&nbsp;&nbsp;<input type="button" id="stop_mining" value="停止挖矿"/></div><br/>
             <dl>
                 <dt><h2>Ethereum-only mining:</h2></dt>
+                <dt><p id="error"></p></dt>
                 <dd>
                     <ul>
                         <li><input type="radio" value="eth" name="ethnum" checked="checked"/>ethpool:<input type="url" id="first_pool" name="eth_url" value="usl.ethpool.org:3333" /></li>
                         <li>wallet<input type="text" id="first_wallet" name="eth_wallet"/></li>
-                        <li>password<input type="password" id="first_password" name="eth_pwd"/></li>
+                        <li>password<input type="text" id="first_password" name="eth_pwd"/></li>
                     </ul>
                     <ul>
                         <li><input type="radio" value="f2"  name="ethnum"/>f2pool:
                         <input type="url" id="second_pool" name="eth_url" value="eth.f2pool.com:8080" /></li>
                         <li>wallet<input type="text" id="second_wallet" name="f2_wallet"/></li>
-                        <li>password<input type="password" id="second_password" name="f2_pwd"/></li>
+                        <li>password<input type="text" id="second_password" name="f2_pwd"/></li>
                         <li>worker<input type="text" id="second_worker" name="f2_worker"/></li>
                     </ul>
                     <ul>
                         <li><input type="radio" value="nano"  name="ethnum"/>nanopool:
                         <input type="url" id="third_pool" name="eth_url" value="eul.nanopool.org:9999" /></li>
                         <li>wallet<input type="text" id="third_wallet" name="nano_wallet"/></li>
-                        <li>password<input type="password" id="third_password" name="nano_pwd"/></li>
+                        <li>password<input type="text" id="third_password" name="nano_pwd"/></li>
                         <li>worker<input type="text" id="third_worker" name="nano_worker"/></li>
                     </ul>
                 </dd>
@@ -44,17 +45,17 @@
                     <ul>
                         <li><input type="radio" value="decred" name="double"/>Decred pool<input type="text" id="four_pool" value="decred_pool"/></li>
                         <li>wallet<input type="text" id="four_wallet" name="decred_name"/></li>
-                        <li>password<input type="password" id="four_password" name="decred_pwd"/></li>
+                        <li>password<input type="text" id="four_password" name="decred_pwd"/></li>
                     </ul>
                     <ul>
                         <li><input type="radio" value="siacoin" name="double"/>Siacoin pool<input type="text" id="five_pool" value="siacoin_pool"/></li>
                         <li>wallet<input type="text" id="five_wallet" name="siacoin_name"/></li>
-                        <li>password<input type="password" id="five_password" name="siacoin_pwd"/></li>
+                        <li>password<input type="text" id="five_password" name="siacoin_pwd"/></li>
                     </ul>
                     <ul>
                         <li><input type="radio" value="lbry" name="double"/>&nbsp;&nbsp;Lbry pool<input type="text" id="six_pool" value="lbry_pool" class="float_Lbry"/></li>
                         <li>wallet<input type="text" id="six_wallet" name="lbry_name"/></li>
-                        <li>password<input type="password" id="six_password" name="lbry_pwd"/></li>
+                        <li>password<input type="text" id="six_password" name="lbry_pwd"/></li>
                     </ul>
                 </dd>
             </dl>
