@@ -20,8 +20,18 @@ li{
 dd{
     margin-left: 100px;
 }
+
+.slim-row {
+    margin-bottom: 10px !important;
+    margin-left: 0 !important;
+}
+
+.slim-input {
+    margin: 0 !important;
+}
+
 #contain{
-   margin: 40px;
+    margin: 40px;
 }
 #left{
     width: 25%;
@@ -34,9 +44,9 @@ dd{
 }
 
 hr{
-    width:10px; 
-    height:1000px; 
-    position: absolute; 
+    width:10px;
+    height:1000px;
+    position: absolute;
     left: 550px;
 }
 

@@ -3,78 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="index.js"></script>
-    <link rel="stylesheet" type="text/css" href="index.css" />
+
+
+    <link href="css/materialicons.css" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="css/miner_frontend.css" />
+
 </head>
 
 <body>
-<div id="contain">
-    <div id="left">
-        <form>
-            <div class="left_head"><input type="button" id="start_mining" value="开始挖矿"/>&nbsp;&nbsp;<input type="button" id="stop_mining" value="停止挖矿"/></div><br/>
-            <dl>
-                <dt><h2>Ethereum-only mining:</h2></dt>
-                <dt><p id="error"></p></dt>
-                <dd>
-                    <ul>
-                        <li><input type="radio" value="eth" name="ethnum" checked="checked"/>ethpool:<input type="url" id="first_pool" name="eth_url" value="usl.ethpool.org:3333" /></li>
-                        <li>wallet<input type="text" id="first_wallet" name="eth_wallet"/></li>
-                        <li>password<input type="text" id="first_password" name="eth_pwd"/></li>
-                    </ul>
-                    <ul>
-                        <li><input type="radio" value="f2"  name="ethnum"/>f2pool:
-                        <input type="url" id="second_pool" name="eth_url" value="eth.f2pool.com:8080" /></li>
-                        <li>wallet<input type="text" id="second_wallet" name="f2_wallet"/></li>
-                        <li>password<input type="text" id="second_password" name="f2_pwd"/></li>
-                        <li>worker<input type="text" id="second_worker" name="f2_worker"/></li>
-                    </ul>
-                    <ul>
-                        <li><input type="radio" value="nano"  name="ethnum"/>nanopool:
-                        <input type="url" id="third_pool" name="eth_url" value="eul.nanopool.org:9999" /></li>
-                        <li>wallet<input type="text" id="third_wallet" name="nano_wallet"/></li>
-                        <li>password<input type="text" id="third_password" name="nano_pwd"/></li>
-                        <li>worker<input type="text" id="third_worker" name="nano_worker"/></li>
-                    </ul>
-                </dd>
-            </dl>
-            <br/><br/>
-            <dl>
-                <dt><h3><input type="checkbox" />双挖</h3></dt>
-                <dd id="double_mining">
-                    <ul>
-                        <li><input type="radio" value="decred" name="double"/>Decred pool<input type="text" id="four_pool" value="decred_pool"/></li>
-                        <li>wallet<input type="text" id="four_wallet" name="decred_name"/></li>
-                        <li>password<input type="text" id="four_password" name="decred_pwd"/></li>
-                    </ul>
-                    <ul>
-                        <li><input type="radio" value="siacoin" name="double"/>Siacoin pool<input type="text" id="five_pool" value="siacoin_pool"/></li>
-                        <li>wallet<input type="text" id="five_wallet" name="siacoin_name"/></li>
-                        <li>password<input type="text" id="five_password" name="siacoin_pwd"/></li>
-                    </ul>
-                    <ul>
-                        <li><input type="radio" value="lbry" name="double"/>&nbsp;&nbsp;Lbry pool<input type="text" id="six_pool" value="lbry_pool" class="float_Lbry"/></li>
-                        <li>wallet<input type="text" id="six_wallet" name="lbry_name"/></li>
-                        <li>password<input type="text" id="six_password" name="lbry_pwd"/></li>
-                    </ul>
-                </dd>
-            </dl>
-        </form>
+
+<div id="ams-dashboard" class="row">
+
+    <div class="col s12 m12 l5">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">&nbsp;</span>
+                <span>
+                <a href="#" class="modal-action waves-effect waves-red btn-flat right">停止挖矿</a>
+                <a href="#" class="modal-action waves-effect waves-green btn-flat right">开始挖矿</a>
+                </span>
+
+                <h5>Ethereum-only mining:</h5>
+                <br>
+
+                <p>
+                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-ethpool" checked />
+                    <label for="pool-sel-ethpool">ethpool</label>
+
+                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-f2pool"  />
+                    <label for="pool-sel-f2pool">f2pool</label>
+
+                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-nanopool"  />
+                    <label for="pool-sel-nanopool">nanopool</label>
+
+                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-custom"  />
+                    <label for="pool-sel-custom">自定义</label>
+
+                </p>
+
+                <br>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input value="usl.ethpool.org:3333" id="pool-cfg-poolurl" type="text" class="slim-input">
+                        <label for="pool-cfg-poolurl">矿池地址</label>
+                    </div>
+                </div>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input id="pool-cfg-workername" type="text" class="slim-input">
+                        <label for="pool-cfg-workername">矿工名称</label>
+                    </div>
+                </div>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input id="pool-cfg-passwd" type="text" class="slim-input">
+                        <label for="pool-cfg-passwd">密码</label>
+                    </div>
+                </div>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input id="pool-cfg-wallet" type="text" class="slim-input">
+                        <label for="pool-cfg-wallet">钱包</label>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <input type="checkbox" class="filled-in" id="dualmine-checkbox" checked/>
+                <label for="dualmine-checkbox">双挖</label>
+
+                <br><br>
+
+                <p>
+                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-decred" checked />
+                    <label for="poold-sel-decred">decred</label>
+
+                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-siacoin"  />
+                    <label for="poold-sel-siacoin">siacoin</label>
+
+                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-lbry"  />
+                    <label for="poold-sel-lbry">lbry</label>
+
+                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-custom"  />
+                    <label for="poold-sel-custom">自定义</label>
+
+                </p>
+
+                <br>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input value="decred_pool" id="poold-cfg-poolurl" type="text" class="slim-input">
+                        <label for="poold-cfg-poolurl">矿池地址</label>
+                    </div>
+                </div>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input id="poold-cfg-workername" type="text" class="slim-input">
+                        <label for="poold-cfg-workername">矿工名称</label>
+                    </div>
+                </div>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input id="poold-cfg-passwd" type="text" class="slim-input">
+                        <label for="poold-cfg-passwd">密码</label>
+                    </div>
+                </div>
+
+                <div class="row slim-row">
+                    <div class="input-field col s6">
+                        <input id="poold-cfg-wallet" type="text" class="slim-input">
+                        <label for="poold-cfg-wallet">钱包</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </div>
-    <!--left end-->
-    <hr>
-    <div id="right">
-        <form>
-            <h2>开始配置：<a href="" target="_blank" class="help">帮助</a></h2>
-            <p>挖矿状态：</p>
-            <input type="checkbox" id="restart_miner" name="chkitem" value="restart" />重启是否自动挖矿<br/><br/>
-            <input type="checkbox" id="enable_access" name="chkitem" value="access" />是否允许其他主机访问<br/>
-            用户名：<input type="text" id="username" name="chkitem"/><br/>
-            密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id="password" name="chkitem"/><br/>
-            <input type="button" id="save_config" name="submit" value="保存"/>
-        </form>
+
+
+    <div class="col s12 m12 l7">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">故障列表</span>
+                <br>
+                <br>
+                <a href="#" class="waves-effect waves-orange btn-flat" onclick="AMS.Issues.UI.SetFilterMode(0)">全部</a>
+                <a href="#" class="waves-effect waves-red btn-flat amscustdpd" data-activates="ams-ulist-issues-critical">严重警告<i class="material-icons right"></i>
+                </a>
+                <ul id="ams-ulist-issues-critical" class="dropdown-content">
+                    <li>
+                        <a href="#" onclick="AMS.Issues.UI.SetFilterMode(1)">
+                            <i class="material-icons left"></i>空闲</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="AMS.Issues.UI.SetFilterMode(4)">
+                            <i class="material-icons left"></i>无风扇</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="AMS.Issues.UI.SetFilterMode(64)">
+                            <i class="material-icons left"></i>温度过高</a>
+                    </li>
+                </ul>
+                <a href="#" class="waves-effect waves-yellow btn-flat amscustdpd" data-activates="ams-ulist-issues-warning">一般警告<i class="material-icons right"></i>
+                </a>
+
+
+                <div class="divider grey lighten-2">
+                </div>
+                <table class="highlight">
+                    <thead>
+                    <tr>
+                        <th data-field="ams-dashboard-badmachines-table-th-ip">控制器</th>
+                        <th data-field="ams-dashboard-badmachines-table-th-auc">AUC</th>
+                        <th data-field="ams-dashboard-badmachines-table-th-module">Module</th>
+                        <th data-field="ams-dashboard-badmachines-table-th-dna">DNA</th>
+                        <th data-field="ams-dashboard-badmachines-table-th-errs">故障内容</th>
+                    </tr>
+                    </thead>
+                    <tbody id="ams-dashboard-issues-table-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <!--right end-->
 </div>
+
+
+
+<script src="js/json2.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jstorage.js"></script>
+<script src="js/materialize.js"></script>
+
 </body>
 </html>
