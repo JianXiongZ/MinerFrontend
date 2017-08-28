@@ -55,11 +55,12 @@ hr{
     float: right;
 
 }
+
 .float_Lbry{
     margin-left: 13px;
 }
 .help{
-    font-size: small;
+    font-size: large;
     float: right;
     margin:10px 200px;
 }

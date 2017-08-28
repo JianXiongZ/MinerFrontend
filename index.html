@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-
     <link href="css/materialicons.css" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="css/miner_frontend.css" />
@@ -18,113 +17,112 @@
     <div class="col s12 m12 l5">
         <div class="card hoverable">
             <div class="card-content">
-                <span class="card-title">&nbsp;</span>
-                <span>
-                <a href="#" class="modal-action waves-effect waves-red btn-flat right">停止挖矿</a>
-                <a href="#" class="modal-action waves-effect waves-green btn-flat right">开始挖矿</a>
-                </span>
+                <form action="#">
+                    <span class="card-title">&nbsp;</span>
+                    <span>
+                    <a href="#" class="modal-action waves-effect waves-red btn-flat right" id="start_mining">停止挖矿</a>
+                    <a href="#" class="modal-action waves-effect waves-green btn-flat right" id="stop_mining">开始挖矿</a>
+                    </span>
 
-                <h5>Ethereum-only mining:</h5>
-                <br>
+                    <h5>Ethereum-only mining:</h5>
+                    <br>
+                    <p id="error"></p>
+                    <p>
+                        <input class="with-gap" name="pool-sel" type="radio" value="eth" id="pool-sel-ethpool" checked />
+                        <label for="pool-sel-ethpool">ethpool</label>
 
-                <p>
-                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-ethpool" checked />
-                    <label for="pool-sel-ethpool">ethpool</label>
+                        <input class="with-gap" name="pool-sel" type="radio"  value="f2" id="pool-sel-f2pool"  />
+                        <label for="pool-sel-f2pool">f2pool</label>
 
-                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-f2pool"  />
-                    <label for="pool-sel-f2pool">f2pool</label>
+                        <input class="with-gap" name="pool-sel"  type="radio" value="nano" id="pool-sel-nanopool" />
+                        <label for="pool-sel-nanopool">nanopool</label>
 
-                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-nanopool"  />
-                    <label for="pool-sel-nanopool">nanopool</label>
+                    </p>
 
-                    <input class="with-gap" name="pool-sel" type="radio" id="pool-sel-custom"  />
-                    <label for="pool-sel-custom">自定义</label>
+                    <br>
 
-                </p>
-
-                <br>
-
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input value="usl.ethpool.org:3333" id="pool-cfg-poolurl" type="text" class="slim-input">
-                        <label for="pool-cfg-poolurl">矿池地址</label>
+                    <div class="row slim-row">
+                        <div class="input-field col s6">
+                            <input value="usl.ethpool.org:3333" id="pool-cfg-poolurl" type="text" class="slim-input">
+                            <label for="pool-cfg-poolurl">矿池地址</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input id="pool-cfg-workername" type="text" class="slim-input">
-                        <label for="pool-cfg-workername">矿工名称</label>
+                    <div class="row slim-row">
+                        <div class="input-field col s6">
+                            <input id="pool-cfg-workername" type="text" class="slim-input">
+                            <label for="pool-cfg-workername">矿工名称</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input id="pool-cfg-passwd" type="text" class="slim-input">
-                        <label for="pool-cfg-passwd">密码</label>
+                    <div class="row slim-row">
+                        <div class="input-field col s6">
+                            <input id="pool-cfg-passwd" type="text" class="slim-input">
+                            <label for="pool-cfg-passwd">密码</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input id="pool-cfg-wallet" type="text" class="slim-input">
-                        <label for="pool-cfg-wallet">钱包</label>
+                    <div class="row slim-row">
+                        <div class="input-field col s6">
+                            <input id="pool-cfg-wallet" type="text" class="slim-input">
+                            <label for="pool-cfg-wallet">钱包</label>
+                        </div>
                     </div>
-                </div>
 
-                <br>
-                <br>
+                    <br>
+                    <br>
 
-                <input type="checkbox" class="filled-in" id="dualmine-checkbox" checked/>
-                <label for="dualmine-checkbox">双挖</label>
+                    <input type="checkbox" class="filled-in" id="dualmine-checkbox" checked/>
+                    <label for="dualmine-checkbox">双挖</label>
 
-                <br><br>
+                    <br><br>
+                    <div id="double_main">
+                        <p>
+                            <input class="with-gap" name="poold-sel2" type="radio" value="decred" id="poold-sel-decred" checked />
+                            <label for="poold-sel-decred">decred</label>
 
-                <p>
-                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-decred" checked />
-                    <label for="poold-sel-decred">decred</label>
+                            <input class="with-gap" name="poold-sel2" type="radio" value="siacoin" id="poold-sel-siacoin"  />
+                            <label for="poold-sel-siacoin">siacoin</label>
 
-                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-siacoin"  />
-                    <label for="poold-sel-siacoin">siacoin</label>
+                            <input class="with-gap" name="poold-sel2" type="radio" value="lbry" id="poold-sel-lbry"  />
+                            <label for="poold-sel-lbry">lbry</label>
 
-                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-lbry"  />
-                    <label for="poold-sel-lbry">lbry</label>
+                            <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-custom"  />
+                            <label for="poold-sel-custom">自定义</label>
 
-                    <input class="with-gap" name="poold-sel" type="radio" id="poold-sel-custom"  />
-                    <label for="poold-sel-custom">自定义</label>
+                        </p>
 
-                </p>
+                        <br>
 
-                <br>
+                        <div class="row slim-row">
+                            <div class="input-field col s6">
+                                <input value="stratum+tcp://yiimp.ccminer.org:3252" id="poold-cfg-poolurl" type="text" class="slim-input" disabled>
+                                <label for="poold-cfg-poolurl">矿池地址</label>
+                            </div>
+                        </div>
 
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input value="decred_pool" id="poold-cfg-poolurl" type="text" class="slim-input">
-                        <label for="poold-cfg-poolurl">矿池地址</label>
+                        <div class="row slim-row">
+                            <div class="input-field col s6">
+                                <input id="poold-cfg-workername" type="text" class="slim-input">
+                                <label for="poold-cfg-workername">矿工名称</label>
+                            </div>
+                        </div>
+
+                        <div class="row slim-row">
+                            <div class="input-field col s6">
+                                <input id="poold-cfg-passwd" type="text" class="slim-input">
+                                <label for="poold-cfg-passwd">密码</label>
+                            </div>
+                        </div>
+
+                        <div class="row slim-row">
+                            <div class="input-field col s6">
+                                <input id="poold-cfg-wallet" type="text" class="slim-input">
+                                <label for="poold-cfg-wallet">钱包</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input id="poold-cfg-workername" type="text" class="slim-input">
-                        <label for="poold-cfg-workername">矿工名称</label>
-                    </div>
-                </div>
-
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input id="poold-cfg-passwd" type="text" class="slim-input">
-                        <label for="poold-cfg-passwd">密码</label>
-                    </div>
-                </div>
-
-                <div class="row slim-row">
-                    <div class="input-field col s6">
-                        <input id="poold-cfg-wallet" type="text" class="slim-input">
-                        <label for="poold-cfg-wallet">钱包</label>
-                    </div>
-                </div>
-
+                </form>
 
             </div>
         </div>
@@ -134,45 +132,34 @@
     <div class="col s12 m12 l7">
         <div class="card hoverable">
             <div class="card-content">
-                <span class="card-title">故障列表</span>
-                <br>
-                <br>
-                <a href="#" class="waves-effect waves-orange btn-flat" onclick="AMS.Issues.UI.SetFilterMode(0)">全部</a>
-                <a href="#" class="waves-effect waves-red btn-flat amscustdpd" data-activates="ams-ulist-issues-critical">严重警告<i class="material-icons right"></i>
-                </a>
-                <ul id="ams-ulist-issues-critical" class="dropdown-content">
-                    <li>
-                        <a href="#" onclick="AMS.Issues.UI.SetFilterMode(1)">
-                            <i class="material-icons left"></i>空闲</a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="AMS.Issues.UI.SetFilterMode(4)">
-                            <i class="material-icons left"></i>无风扇</a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="AMS.Issues.UI.SetFilterMode(64)">
-                            <i class="material-icons left"></i>温度过高</a>
-                    </li>
-                </ul>
-                <a href="#" class="waves-effect waves-yellow btn-flat amscustdpd" data-activates="ams-ulist-issues-warning">一般警告<i class="material-icons right"></i>
-                </a>
+                <form action="#">
+                    <h5>开始配置：<a href="#" class="help">帮助</a></h5><br/>
+                    <h6>挖矿状态：<span class="status">状态</span></h6><br>
 
+                        <input class="with-gap" name="pool-sel" type="checkbox" id="pool-sel-reboot"  />
+                        <label for="pool-sel-reboot">重启自动挖矿</label>
+                        <br/><br/>
+                        <input class="with-gap" name="pool-sel" type="checkbox" id="pool-sel-choose" />
+                        <label for="pool-sel-choose">允许其他主机访问</label>
 
-                <div class="divider grey lighten-2">
-                </div>
-                <table class="highlight">
-                    <thead>
-                    <tr>
-                        <th data-field="ams-dashboard-badmachines-table-th-ip">控制器</th>
-                        <th data-field="ams-dashboard-badmachines-table-th-auc">AUC</th>
-                        <th data-field="ams-dashboard-badmachines-table-th-module">Module</th>
-                        <th data-field="ams-dashboard-badmachines-table-th-dna">DNA</th>
-                        <th data-field="ams-dashboard-badmachines-table-th-errs">故障内容</th>
-                    </tr>
-                    </thead>
-                    <tbody id="ams-dashboard-issues-table-tbody">
-                    </tbody>
-                </table>
+                    <div id="pool-sel-login">
+                        <div class="row slim-row">
+                            <div class="input-field col s6">
+                                <input id="pool-cfg-uname" type="text" class="slim-input">
+                                <label for="pool-cfg-uname">请输入您的用户名</label>
+                            </div>
+                        </div>
+
+                        <div class="row slim-row">
+                            <div class="input-field col s6">
+                                <input id="pool-cfg-pwd" type="text" class="slim-input">
+                                <label for="pool-cfg-pwd">请输入您的密码</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <input type="submit" class="modal-action waves-effect waves-green btn-flat "/>
+                </form>
             </div>
         </div>
     </div>
@@ -184,6 +171,7 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jstorage.js"></script>
 <script src="js/materialize.js"></script>
+<script src="js/miner_frontend.js"></script>
 
 </body>
 </html>

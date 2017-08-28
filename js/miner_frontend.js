@@ -1,5 +1,4 @@
 $().ready(function(){
-
     		$('#stop_mining').click(function(){
     			$.ajax({
     				type:"GET",
@@ -10,27 +9,17 @@ $().ready(function(){
     			$("#error").text("");
     			function get_config(){
     				var myconfig=[];
-    				var val_eth=$('input:radio[name="ethnum"]:checked').val();
-    				var val_dou=$('input:radio[name="double"]:checked').val();
+    				var val_eth=$('input:radio[name="pool-sel"]:checked').val();
+    				var val_dou=$('input:radio[name="pool-sel2"]:checked').val();
 
     				if (val_eth == 'eth' ){
-    					myconfig.push($('#first_pool').val(), $('#first_wallet').val(), $('#first_password').val()) 
+    					myconfig.push($('#pool-cfg-poolurl').val(), $('#pool-cfg-workername').val(), $('#pool-cfg-passwd').val())
     				}
-    				else if (val_eth == 'f2') {
-    					myconfig.push($('#second_pool').val(), $('#second_wallet').val(), $('#second_password').val(), $('#second_worker').val())
+    				else if (val_eth == 'f2' || val_eth == 'nano') {
+                        myconfig.push($('#pool-cfg-poolurl').val(), $('#pool-cfg-workername').val(), $('#pool-cfg-passwd').val(), $('#pool-cfg-wallet').val())
     				}
-    				else if (val_eth == 'nano') {
-    					myconfig.push($('#third_pool').val(), $('#third_wallet').val(), $('#third_password').val(), $('#third_worker').val())
-    				};
-
-    				if (val_dou == 'decred') {
-    					myconfig.push($('#four_pool').val(), $('#four_wallet').val(), $('#four_password').val())
-    				}
-    				else if (val_dou == 'siacoin') {
-    					myconfig.push($('#five_pool').val(), $('#five_wallet').val(), $('#five_password').val())
-    				}
-    				else if (val_dou == 'lbry') {
-    					myconfig.push($('#six_pool').val(), $('#six_wallet').val(), $('#six_password').val())
+    				if (val_dou == 'decred' || val_dou == 'siacoin' || val_dou == 'lbry') {
+    					myconfig.push($('#poold-cfg-poolurl').val(), $('#poold-cfg-workername').val(), $('#poold-cfg-passwd').val(),$('#poold-cfg-wallet').val())
     				}
     				return myconfig;
 
@@ -72,4 +61,51 @@ $().ready(function(){
     			});
     			
     		});
+    		$('#pool-sel-ethpool').click(function () {
+                //$("#pool-cfg-poolurl").focus();
+                document.getElementById('pool-cfg-poolurl').value='usl.ethpool.org:3333';
+            });
+    		$('#pool-sel-f2pool').click(function () {
+    			//$("#pool-cfg-poolurl").focus();
+                document.getElementById('pool-cfg-poolurl').value='eth.f2pool.com:8008';
+            });
+			$('#pool-sel-nanopool').click(function () {
+                //$("#pool-cfg-poolurl").focus();
+                document.getElementById('pool-cfg-poolurl').value='eul.nanopool.org:9999';
+			});
+			$("#dualmine-checkbox").click(function(){
+                var _check = $(this).is(':checked');
+				if(_check){
+                    $("#double_main").show();
+                }else{
+                    $("#double_main").hide();
+                }
+			});
+			$("#pool-sel-choose").click(function(){
+				var _check = $(this).is(':checked');
+				if(_check){
+					$("#pool-sel-login").show();
+				}else{
+					$("#pool-sel-login").hide();
+				}
+			});
+		$('#poold-sel-decred').click(function () {
+            $("#poold-cfg-poolurl").focus();
+            $('#poold-cfg-poolurl').val('stratum+tcp://yiimp.ccminer.org:3252').attr('disabled','true');
+
+		});
+		$('#poold-sel-siacoin').click(function () {
+            $("#poold-cfg-poolurl").focus();
+            $('#poold-cfg-poolurl').val('stratum+tcp://hub.miningpoolhub.com:20550').attr('disabled','true');
+		});
+		$('#poold-sel-lbry').click(function () {
+            $("#poold-cfg-poolurl").focus();
+            $('#poold-cfg-poolurl').val('stratum+tcp://lbry.suprnova.cc:6256').attr('disabled','true');
+		});
+		$('#poold-sel-custom').click(function () {
+            $("#poold-cfg-poolurl").focus();
+            $('#poold-cfg-poolurl').val('').removeAttr('disabled');
+		});
+
+
   	});
