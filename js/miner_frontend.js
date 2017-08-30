@@ -11,7 +11,6 @@ $().ready(function(){
     				var myconfig=[];
     				var val_eth=$('input:radio[name="pool-sel"]:checked').val();
     				var val_dou=$('input:radio[name="pool-sel2"]:checked').val();
-
     				if (val_eth == 'eth' ){
     					myconfig.push($('#pool-cfg-poolurl').val(), $('#pool-cfg-workername').val(), $('#pool-cfg-passwd').val())
     				}
@@ -22,7 +21,6 @@ $().ready(function(){
     					myconfig.push($('#poold-cfg-poolurl').val(), $('#poold-cfg-workername').val(), $('#poold-cfg-passwd').val(),$('#poold-cfg-wallet').val())
     				}
     				return myconfig;
-
     			}
     			$.ajax({
     				type:"GET",
@@ -38,7 +36,6 @@ $().ready(function(){
     			});
     		});
     		$('#save_config').click(function(){
-    			
     			function save_config(){
     				var my_saveconfig = new Array();
     				chkitem=document.forms[1].chkitem;
@@ -49,7 +46,7 @@ $().ready(function(){
 								my_saveconfig.push(chkitem[i].value)
 							}
 							else{
-								my_saveconfig.push($('#username').val(), $('#password').val())
+								my_saveconfig.push($('#pool-cfg-uname').val(), $('#pool-cfg-pwd').val())
 							}
     					}
     				}
@@ -59,18 +56,14 @@ $().ready(function(){
     				type:"GET",
     				url:"/eth_miner/config.py?config=" + save_config(),
     			});
-    			
     		});
     		$('#pool-sel-ethpool').click(function () {
-                //$("#pool-cfg-poolurl").focus();
                 document.getElementById('pool-cfg-poolurl').value='usl.ethpool.org:3333';
             });
     		$('#pool-sel-f2pool').click(function () {
-    			//$("#pool-cfg-poolurl").focus();
                 document.getElementById('pool-cfg-poolurl').value='eth.f2pool.com:8008';
             });
 			$('#pool-sel-nanopool').click(function () {
-                //$("#pool-cfg-poolurl").focus();
                 document.getElementById('pool-cfg-poolurl').value='eul.nanopool.org:9999';
 			});
 			$("#dualmine-checkbox").click(function(){
@@ -106,6 +99,4 @@ $().ready(function(){
             $("#poold-cfg-poolurl").focus();
             $('#poold-cfg-poolurl').val('').removeAttr('disabled');
 		});
-
-
   	});
