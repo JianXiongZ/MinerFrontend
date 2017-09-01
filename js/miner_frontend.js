@@ -2,7 +2,7 @@ $().ready(function(){
     		$('#stop_mining').click(function(){
     			$.ajax({
     				type:"GET",
-    				url: "/eth_miner/stop_miner.sh",
+    				url: "/eth_miner/stop_miner",
     			});
     		});
     		$('#start_mining').click(function(){
@@ -10,9 +10,9 @@ $().ready(function(){
     			function get_config(){
     				var myconfig=[];
     				var val_eth=$('input:radio[name="pool-sel"]:checked').val();
-    				var val_dou=$('input:radio[name="pool-sel2"]:checked').val();
+    				var val_dou=$('input:radio[name="poold-sel2"]:checked').val();
     				if (val_eth == 'eth' ){
-    					myconfig.push($('#pool-cfg-poolurl').val(), $('#pool-cfg-workername').val(), $('#pool-cfg-passwd').val())
+    					myconfig.push($('#pool-cfg-poolurl').val(), $('#pool-cfg-wallet').val(), $('#pool-cfg-passwd').val())
     				}
     				else if (val_eth == 'f2' || val_eth == 'nano') {
                         myconfig.push($('#pool-cfg-poolurl').val(), $('#pool-cfg-workername').val(), $('#pool-cfg-passwd').val(), $('#pool-cfg-wallet').val())
@@ -24,7 +24,7 @@ $().ready(function(){
     			}
     			$.ajax({
     				type:"GET",
-    				url: "/eth_miner/mining.py?config=" + get_config(),
+    				url: "/eth_miner/config.py?config_mining=" + get_config(),
     				dataType: 'json',
     				success:function(data){
 
@@ -54,7 +54,7 @@ $().ready(function(){
     		}
     			$.ajax({
     				type:"GET",
-    				url:"/eth_miner/config.py?config=" + save_config(),
+    				url:"/eth_miner/config.py?config_save=" + save_config(),
     			});
     		});
     		$('#pool-sel-ethpool').click(function () {
@@ -98,5 +98,24 @@ $().ready(function(){
 		$('#poold-sel-custom').click(function () {
             $("#poold-cfg-poolurl").focus();
             $('#poold-cfg-poolurl').val('').removeAttr('disabled');
+		});
+		$.ajax({
+			type:"GET",
+			url:"/eth_miner/get_config.py",
+			dataType:"json",
+			success:function(data){
+				$("#pool-cfg-poolurl").val(data["-epool"]);
+				$('#pool-cfg-passwd').val(data["-epsw"]);
+				$('#pool-cfg-wallet').val(data["-ewal"]);
+				$('#pool-cfg-workername').val(data["-eworker"]);
+				$('#poold-cfg-poolurl').val(data["-dpool"]);
+				$('#poold-cfg-workername').val(data["-dworker"]);
+				$('#poold-cfg-passwd').val(data["-dpasw"]);
+				$('#poold-cfg-wallet').val(data["-dwal"]);
+				
+				Materialize.updateTextFields();
+
+
+			}
 		});
   	});
