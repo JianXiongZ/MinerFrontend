@@ -21,7 +21,7 @@
                     <span class="card-title">&nbsp;</span>
                     <span>
                     <a href="#" class="modal-action waves-effect waves-red btn-flat right" id="stop_mining">停止挖矿</a>
-                    <a href="#" class="modal-action waves-effect waves-green btn-flat right" id="start_mining">开始挖矿</a>
+                    <a href="#" class="modal-action waves-effect waves-green btn-flat right" id="start_mining">保存配置并开始挖矿</a>
                     </span>
 
                     <h5>Ethereum-only mining:</h5>
@@ -135,32 +135,30 @@
                 <form>
                     <br/><br/>
                     <h5>开始配置：<a href="#" class="help">帮助</a></h5><br/><br/>
-                   <!--
-                    <h6>挖矿状态：<span class="status">状态</span></h6><br>
-                    -->
-                        <input class="with-gap" name="pool-sel" type="checkbox" id="pool-sel-reboot"  />
+                   
+                        <input class="with-gap" name="chkitem" type="checkbox" value="restart" id="pool-sel-reboot"  />
                         <label for="pool-sel-reboot">重启自动挖矿</label>
                         <br/><br/><br/>
-                        <input class="with-gap" name="pool-sel" type="checkbox" id="pool-sel-choose" checked/>
+                        <input class="with-gap" name="chkitem" type="checkbox" value="access" id="pool-sel-choose" checked/>
                         <label for="pool-sel-choose">允许其他主机访问</label>
 
                     <div id="pool-sel-login">
                         <div class="row slim-row">
                             <div class="input-field col s6">
-                                <input id="pool-cfg-uname" type="text" class="slim-input">
+                                <input id="pool-cfg-uname" type="text" name="chkitem" class="slim-input">
                                 <label for="pool-cfg-uname">请输入您的用户名</label>
                             </div>
                         </div>
 
                         <div class="row slim-row">
                             <div class="input-field col s6">
-                                <input id="pool-cfg-pwd" type="text" class="slim-input">
+                                <input id="pool-cfg-pwd" type="text" name="chkitem" class="slim-input">
                                 <label for="pool-cfg-pwd">请输入您的密码</label>
                             </div>
                         </div>
                     </div>
                     <br/>
-                    <input type="button" class="modal-action waves-effect waves-green btn-flat " id="save_config"/>
+                    <input type="button" class="modal-action waves-effect waves-green btn-flat" value="提交" id="save_config"/>
                 </form>
             </div>
             <div class="card-content" >
@@ -168,10 +166,9 @@
                 <p>
                 <h5>挖矿状态：</h5>
                 </p>
-                <iframe frameborder="1" width="724px" height="337px" scroll-padding-right="30%"  src="127.0.0.1">
-
-                </iframe>
-
+                <iframe frameborder="1" width="724px" height="337px" scroll-padding-right="30%"  src="http://127.0.0.1:8080">
+                </iframe> 
+                
             </div>
         </div>
     </div>
