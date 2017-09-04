@@ -1,4 +1,9 @@
 $().ready(function(){
+            var radio_text = document.getElementById('pool-sel-ethpool').checked;
+            if (radio_text == true){
+                document.getElementById('mining_worker').innerHTML ='';
+            };
+            
     		$('#stop_mining').click(function(){
     			$.ajax({
     				type:"GET",
