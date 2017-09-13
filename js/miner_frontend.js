@@ -1,6 +1,11 @@
 $().ready(function(){
     		$('#stop_mining').click(function(){
+		if ($('input:radio[name="language"]:checked').val() == "english"){
+ 		    var r=confirm("Are you sure?")
+                } 
+		else{
                 var r=confirm("确实停止挖矿吗?")
+		}
                 if (r==true)
                 {
                     $.ajax({
@@ -13,16 +18,16 @@ $().ready(function(){
     		$('#start_mining').click(function(){
     			$("#error").text("");
     			function get_config(){
-    			var myconfig=[];
-    			var val_eth=$('input:radio[name="pool-sel"]:checked').val();
-    			var val_dou=$('input:radio[name="poold-sel2"]:checked').val();
-				var checkbox_text=document.getElementById("dualmine-checkbox").checked
-    			if (val_eth == 'eth' ){
-    				myconfig.push(val_eth, $('#pool-cfg-poolurl').val(), $('#pool-cfg-wallet').val(), $('#pool-cfg-passwd').val())
-    			}
-    			else if (val_eth == 'f2' || val_eth == 'nano') {
-                    myconfig.push(val_eth, $('#pool-cfg-poolurl').val(), $('#pool-cfg-wallet').val(), $('#pool-cfg-passwd').val(), $('#pool-cfg-workername').val())
-    			}
+    				var myconfig=[];
+    				var val_eth=$('input:radio[name="pool-sel"]:checked').val();
+    				var val_dou=$('input:radio[name="poold-sel2"]:checked').val();
+					var checkbox_text=document.getElementById("dualmine-checkbox").checked
+    				if (val_eth == 'eth' ){
+    					myconfig.push(val_eth, $('#pool-cfg-poolurl').val(), $('#pool-cfg-wallet').val(), $('#pool-cfg-passwd').val())
+    				}
+    				else if (val_eth == 'f2' || val_eth == 'nano') {
+                        		myconfig.push(val_eth, $('#pool-cfg-poolurl').val(), $('#pool-cfg-wallet').val(), $('#pool-cfg-passwd').val(), $('#pool-cfg-workername').val())
+    				}
 				if(checkbox_text == true){
     					myconfig.push($('#poold-cfg-poolurl').val().replace(/\+/g, "%2B"), $('#poold-cfg-wallet').val(),$('#poold-cfg-passwd').val(), val_dou)    					
 				}
@@ -132,19 +137,53 @@ $().ready(function(){
 				$('#poold-cfg-passwd').val(data["-dpasw"]);
 				$('#poold-cfg-wallet').val(data["-dwal"]);
 				$('#pool-cfg-uname').val(data["username"]);
-                		$('#pool-cfg-pwd').val("");
-                		if (data["ifrestart"] == "restart"){
+                $('#pool-cfg-pwd').val("");
+                if (data["ifrestart"] != null){
 					document.getElementById("pool-sel-reboot").checked=true;
-            			}	
+            	}	
 
-            			var radio_text = document.getElementById('pool-sel-ethpool').checked;
+            	var radio_text = document.getElementById('pool-sel-ethpool').checked;
 				if(radio_text == true){
 					$('#pool-cfg-workername').hide();
-            				$("[for='pool-cfg-workername']").hide();
+            		$("[for='pool-cfg-workername']").hide();
 				}
 				Materialize.updateTextFields();
 
 			}
 		});
+		
+
+		setInterval(function(){
+    			$.ajax({
+    				type:"GET",
+    				url:"/eth_miner/check_process.sh",
+                    dataType: 'json',
+                    success:function(data){
+                        if (data["status"] == "not_mining") {
+                        	$("a.btn").css("background-color", "#9e9e9e");
+				if ($('input:radio[name="language"]:checked').val() == "english"){
+                                    $("#mining_status").text("Stop Mining");
+                                }
+                                else{
+                                    $("#mining_status").text("停止挖矿");
+                                };
+				$("#stop_mining").attr("disabled","true");
+				$('#start_mining').removeAttr("disabled");
+                        }
+                       	else if(data["status"] == "is_mining"){
+                       		$("a.btn").css("background-color", "#00e676");
+				if ($('input:radio[name="language"]:checked').val() == "english"){
+				    $("#mining_status").text("Now Mining");
+				}
+				else{
+				    $("#mining_status").text("正在挖矿");
+				};
+				$("#start_mining").attr("disabled","true");
+				$("#stop_mining").removeAttr("disabled");
+                       	}                       
+                    }
+    			});
+    		
+    		}, 5000);
 	
   	});

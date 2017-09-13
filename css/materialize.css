@@ -4954,16 +4954,17 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #9e9e9e;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
   cursor: pointer;
 }
 
-.btn:hover, .btn-large:hover {
+/*.btn:hover, .btn-large:hover {
   background-color: #2bbbad;
 }
+*/
 
 .btn-floating {
   display: inline-block;
@@ -5245,6 +5246,7 @@ button.btn-floating {
   z-index: 1;
   will-change: opacity, transform;
   transition: .3s ease-out;
+ /* background-color: #DFDFDF;*/
 }
 
 .waves-effect .waves-ripple {
@@ -5267,6 +5269,7 @@ button.btn-floating {
 
 .waves-effect.waves-light .waves-ripple {
   background-color: rgba(255, 255, 255, 0.45);
+  /*background-color: #9e9e9e; */
 }
 
 .waves-effect.waves-red .waves-ripple {

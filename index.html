@@ -9,9 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/miner_frontend.css" />
 
 </head>
-
 <body>
-
 <div id="ams-dashboard" class="row">
 
     <div class="col s12 m12 l5">
@@ -20,6 +18,7 @@
                 <form>
                     <span class="card-title">&nbsp;</span>
                     <span>
+                   
                     <a href="#" class="modal-action waves-effect waves-red btn-flat right" id="stop_mining">停止挖矿</a>
                     <a href="#" class="modal-action waves-effect waves-green btn-flat right" id="start_mining">保存配置并开始挖矿</a>
                     </span>
@@ -36,43 +35,41 @@
 
                         <input class="with-gap" name="pool-sel"  type="radio" value="nano" id="pool-sel-nanopool" />
                         <label for="pool-sel-nanopool">nanopool</label>
-
                     </p>
-
                     <br>
 
                     <div class="row slim-row">
                         <div class="input-field col s6">
                             <input value="usl.ethpool.org:3333" id="pool-cfg-poolurl" type="text" class="slim-input">
-                            <label for="pool-cfg-poolurl">矿池地址</label>
+                            <label for="pool-cfg-poolurl" id="poolurl">矿池地址</label>
                         </div>
                     </div>
-
 
                     <div class="row slim-row">
                         <div class="input-field col s6">
                             <input id="pool-cfg-wallet" type="text" class="slim-input">
-                            <label for="pool-cfg-wallet">钱包</label>
+                            <label for="pool-cfg-wallet" id="poolwallet">钱包</label>
                         </div>
                     </div>
 
                     <div class="row slim-row">
                         <div class="input-field col s6">
                             <input id="pool-cfg-passwd" type="text" class="slim-input">
-                            <label for="pool-cfg-passwd" >密码</label>
+                            <label for="pool-cfg-passwd" id="poolpasswd" >密码</label>
                         </div>
                     </div>
 
                      <div class="row slim-row">
-                        <div class="input-field col s6" id="mining_worker">
-                          <input id="pool-cfg-workername" type="text" class="slim-input"><label for="pool-cfg-workername">矿工名称</label> 
+                        <div class="input-field col s6">
+                          <input id="pool-cfg-workername" type="text" class="slim-input">
+                          <label for="pool-cfg-workername" id="poolworker">矿工名称</label> 
                         </div>
                     </div>
                     <br>
                     <br>
 
-                    <input type="checkbox" class="filled-in" id="dualmine-checkbox" checked/>
-                    <label for="dualmine-checkbox">双挖</label>
+                    <input type="checkbox" class="filled-in" id="dualmine-checkbox" />
+                    <label for="dualmine-checkbox" id="double-mining">双挖</label>
 
                     <br><br>
                     <div id="double_main">
@@ -87,7 +84,7 @@
                             <label for="poold-sel-lbry">lbry</label>
 
                             <input class="with-gap" name="poold-sel2" type="radio" value="custom" id="poold-sel-custom"  />
-                            <label for="poold-sel-custom">自定义</label>
+                            <label for="poold-sel-custom" id="yourcustom">自定义</label>
 
                         </p>
 
@@ -96,21 +93,21 @@
                         <div class="row slim-row">
                             <div class="input-field col s6">
                                 <input value="stratum+tcp://yiimp.ccminer.org:3252" id="poold-cfg-poolurl" type="text" class="slim-input">
-                                <label for="poold-cfg-poolurl">矿池地址</label>
+                                <label for="poold-cfg-poolurl" id="pooldurl">矿池地址</label>
                             </div>
                         </div>
 
                         <div class="row slim-row">
                             <div class="input-field col s6">
                                 <input id="poold-cfg-wallet" type="text" class="slim-input">
-                                <label for="poold-cfg-wallet">钱包</label>
+                                <label for="poold-cfg-wallet" id="pooldwallet">钱包</label>
                             </div>
                         </div>
 
                         <div class="row slim-row">
                             <div class="input-field col s6">
                                 <input id="poold-cfg-passwd" type="text" class="slim-input">
-                                <label for="poold-cfg-passwd">密码</label>
+                                <label for="poold-cfg-passwd" id="pooldpasswd">密码</label>
                             </div>
                         </div>
 
@@ -125,29 +122,37 @@
 
     <div class="col s12 m12 l7">
         <div class="card hoverable">
-            <div class="card-content">
+            <div class="card-content" style="min-height: 586.4px;">
                 <form>
+		   <p class="help">
+                        <input class="with-gap" name="language" type="radio"  value="chinese" id="chinese" checked/>
+                        <label for="chinese">中文</label>
+			<input class="with-gap" name="language" type="radio" value="english" id="english" />
+                        <label for="english">English</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" class="help" id="help">帮助</a>
+                    </p>
                     <br/><br/>
-                    <h5>开始配置：<a href="#" class="help">帮助</a></h5><br/><br/>
+                    <h5 id="start_config">开始配置：</h5><br/><br/>
 			<p id="no_name"></p>                   
                         <input class="with-gap" name="chkitem" type="checkbox" value="restart" id="pool-sel-reboot"  />
-                        <label for="pool-sel-reboot">重启自动挖矿</label>
+                        <label for="pool-sel-reboot" id="restart_mining">重启自动挖矿</label>
                         <br/><br/><br/>
                         <input class="with-gap" name="chkitem" type="checkbox" value="access" id="pool-sel-choose" checked/>
-                        <label for="pool-sel-choose">允许其他主机访问</label>
+                        <label for="pool-sel-choose" id="access_other">允许其他主机访问</label>
 
                     <div id="pool-sel-login">
                         <div class="row slim-row">
                             <div class="input-field col s6">
                                 <input id="pool-cfg-uname" type="text" name="chkitem" class="slim-input">
-                                <label for="pool-cfg-uname">请输入您的用户名</label>
+                                <label for="pool-cfg-uname" id="yourname">请输入您的用户名</label>
                             </div>
                         </div>
 
                         <div class="row slim-row">
                             <div class="input-field col s6">
                                 <input id="pool-cfg-pwd" type="text" name="chkitem" class="slim-input">
-                                <label for="pool-cfg-pwd">请输入您的密码</label>
+                                <label for="pool-cfg-pwd" id="yourpasswd">请输入您的密码</label>
                             </div>
                         </div>
                     </div>
@@ -158,11 +163,12 @@
             <div class="card-content" >
 
                 <p>
-                <h5>挖矿状态：</h5>
-                </p>
-                <iframe frameborder="1" width="724px" height="337px" scroll-padding-right="30%"  src="http://127.0.0.1:8080">
+                <h5 id="status">挖矿状态：</h5> 
+		<h5><a class="btn" id="mining_status""></a></h5>
+		</p>
+               <!-- <iframe frameborder="1" width="724px" height="337px" scroll-padding-right="30%"  src="http://127.0.0.1:8080">
                 </iframe> 
-                
+                -->
             </div>
         </div>
     </div>
@@ -175,6 +181,6 @@
 <script src="js/jstorage.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/miner_frontend.js"></script>
-
+<script src="js/miner_language.js"></script>
 </body>
 </html>
