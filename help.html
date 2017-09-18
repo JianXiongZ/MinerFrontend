@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>帮助</title>
+</head>
+<body>
+
+<h2><a href="#DD" >English</a></h2>
+
+<center>
+<h1>帮助文档</h1>
+</center>
+ 
+<p>
+<h2>1 产品介绍</h2>
+</p>
+<p>
+   算力：200Mhash/s(ETH)
+</p>
+ <p>
+   墙上功耗：1226W(ETH)
+</p>
+
+<p>
+   SwitchBoard 扩展版
+</p>
+<p>
+   MXM470Board MXM470板
+</p>
+
+<p>   
+   支持单挖模式和双挖模式。
+</p> 
+ 
+ <p>
+<h2>2 Ethereum-only mining(单挖模式)</h2>
+</p>
+<p>
+<h3>2-1  矿池选择</h3>
+</p>
+<p>
+        支持ethpool，f2pool，nanopool矿池。用户在需要矿池前点击圆圈就可选中。矿池地址框中自动切换矿池地址。
+</p>
+<p>
+<h3>  2-2  输入用户钱包，密码，矿工名称。</h3>
+</p>
+<p>
+        请用户输入对应矿池的钱包，密码，矿工名称。注意ethpool矿池不需要输入矿工名称。</br>
+        
+        最后点击保存配置并开始挖矿。同样，用户也可以点击停止挖矿结束挖抗。</br> 
+</p>
+
+<p>
+<h2>3 双挖模式</h2>
+</p>
+<p>
+<h3>3-1  矿池选择</h3>
+</p>
+<p>
+        首先用户要勾选双挖才能进入双挖模式。双挖模式支持decred矿池,siacoin矿池,lbry矿池,自定义模式。</br>
+		用户在需要矿池前点击圆圈就可选中。矿池地址框中自动切换矿池地址。</br>
+</p>
+<p>
+<h3>  3-2  输入用户钱包，密码。</h3>
+</p>
+<p>
+        请用户输入对应矿池的钱包，密码。</br>
+        最后点击保存配置并开始挖矿。同样，用户也可以点击停止挖矿结束挖抗。</br>
+</p>
+
+<p>
+<h2>4 高级配置</h2>
+</p>
+<p>
+<h3>4-1  静态网络配置</h3>
+</p>
+在终端中输入如下命令。</br>
+以下命令中x代表用户要自己输入的内容。</br>
+sudo vi /etc/network/interfaces </br>
+auto eth0 </br>
+iface eth0 inet static</br>
+address 192.168.x.x</br>
+netmask 255.255.255.0</br>
+gateway 192.168.x.1</br>
+dns-nameserver 114.114.114.114</br> 
+重启网络：sudo /etc/init.d/networking restart</br>
+<p>
+<h3>4-2  配置开机自动挖矿</h3>
+</p>
+<p> 勾选开机自动挖矿按钮，就可以实现该功能。</p>
+
+<p>
+<h3>4-3 允许其他主机访问</h3>
+</p>
+<p> 此功能可以让其他主机访问本机器。勾选允许其他主机访问方框，出现请输入您的用户名和请输入您的密码。设备默认用户名admin，密码admin。</br>
+    当然用户也可也输入想设置的值。用户名和密码设置成功后，点击提交按钮实现该功能。</br></p>
+
+
+<a id='DD' ></a>
+ <center>
+<h1> Help documentation</h1>
+</center>
+<p>
+<h2>1 product description</h2>
+</p>
+<p>
+   Calculus: 200Mhash / s (ETH)
+</p>
+ <p>
+   Wall Power: 1226W (ETH)
+</p>
+
+<p>
+   SwitchBoard extended version
+</p>
+<p>
+   MXM470Board MXM470 board
+</p>
+
+<p>   
+   Support single digging mode and double digging mode.
+</p> 
+ 
+ <p>
+<h2>2 Ethereum-only mining (single digging mode)</h2>
+</p>
+<p>
+<h3>2-1 mine selection</h3>
+</p>
+<p>
+    Support ethpool, f2pool, nanopool mine. Users need to select the circle before the circle can be selected. The mine pool address box automatically switches the mine pool address.
+</p>
+<p>
+<h3>2-2 Enter the user wallet, password, miner name.</h3>
+</p>
+<p>
+        Please enter the corresponding wallet wallet, password, miner name.Note that the ethpool pool does not require a miner name.</br>
+        
+        Finally click Save Configuration and start mining. Similarly, the user can click to stop digging the end of dug resistance.</br>
+</p>
+
+<p>
+<h2>3 double digging mode</h2>
+</p>
+<p>
+<h3>3-1 mine selection</h3>
+</p>
+<p>
+    First, the user to check the double dig in order to enter the double dig mode. Double dig mode support decred mine pool, siacoin mine pool, lbry mine pool, custom mode.</br>
+	Users need to select the circle before the circle can be selected. The mine pool address box automatically switches the mine pool address.</br>
+</p>
+<p>
+<h3>3-2 Enter the user wallet, password.</h3>
+</p>
+<p>
+        Please enter the corresponding wallet wallet, password.</br>
+        Finally click Save Configuration and start mining. Similarly, the user can click to stop digging the end of dug resistance.</br>
+</p>
+
+<p>
+<h2>4 Advanced configuration</h2>
+</p>
+<p>
+<h3>4-1 static network configuration</h3>
+</p>
+Enter the following command in the terminal. </br>
+In the following command, x represents the user's own input. </br>
+sudo vi /etc/network/interfaces </br>
+auto eth0 </br>
+iface eth0 inet static</br>
+address 192.168.x.x</br>
+netmask 255.255.255.0</br>
+gateway 192.168.x.1</br>
+dns-nameserver 114.114.114.114</br> 
+Restart the network:sudo /etc/init.d/networking restart</br>
+<p>
+<h3>4-2 configuration boot automatic mining</h3>
+</p>
+<p>Check the boot automatically mining button, you can achieve this function.</p>
+
+<p>
+<h3>4-3  allows other hosts to access</h3>
+</p>
+<p> This feature allows other hosts to access the machine.Check to allow other hosts to access the box, appear please enter your username and  enter your password.Device default user name admin, password admin.</br>
+    Of course, users can also enter the value you want to set. After the user name and password are set successfully,click the submit button to implement the function.</br></p>
+
+
+
+<h2><a href="#" onclick="javascript:document.getElementsByTagName('BODY')[0].scrollTop=0;">中文</a></h2>
+
+ 
+</body>
+</html>
+

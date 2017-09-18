@@ -56,8 +56,8 @@ $().ready(function(){
 							if(chkitem[i].value == "restart"){
 								my_saveconfig.push(chkitem[i].value)
 							}
-							else{
-								my_saveconfig.push($('#pool-cfg-uname').val(), $('#pool-cfg-pwd').val())
+							else if(chkitem[i].value == "access"){
+								my_saveconfig.push(chkitem[i].value, $('#pool-cfg-uname').val(), $('#pool-cfg-pwd').val())
 							}
     					}
     				}
@@ -69,7 +69,7 @@ $().ready(function(){
 				dataType: 'json',
                     		success:function(data){
                         		if (data == "no_name_password") {
-                            			$("#no_name").text("Please input name or password!");
+                            		$("#no_name").text("Please input name or password!");
                         		}                       
                     		}
     			});
@@ -137,15 +137,26 @@ $().ready(function(){
 				$('#poold-cfg-passwd').val(data["-dpasw"]);
 				$('#poold-cfg-wallet').val(data["-dwal"]);
 				$('#pool-cfg-uname').val(data["username"]);
-                $('#pool-cfg-pwd').val("");
-                if (data["ifrestart"] != null){
+				$('#pool-cfg-pwd').val(data["password"]);
+                		if (data["ifrestart"] != null){
 					document.getElementById("pool-sel-reboot").checked=true;
-            	}	
+            			}else{
+            				document.getElementById("pool-sel-reboot").checked=false;
+            			};
+            			if ( data["ifaccess"] !=null ){
+					document.getElementById("pool-sel-choose").checked=true;
+						$("#pool-sel-login").show();
+            			}
+            			else{
+            				document.getElementById("pool-sel-choose").checked=false;
+							$("#pool-sel-login").hide();
+				
+            			};
 
             	var radio_text = document.getElementById('pool-sel-ethpool').checked;
 				if(radio_text == true){
 					$('#pool-cfg-workername').hide();
-            		$("[for='pool-cfg-workername']").hide();
+            				$("[for='pool-cfg-workername']").hide();
 				}
 				Materialize.updateTextFields();
 
@@ -184,6 +195,6 @@ $().ready(function(){
                     }
     			});
     		
-    		}, 5000);
+    		}, 10000);
 	
   	});
